@@ -1,0 +1,1 @@
+App.cable.subscriptions.create { channel: "RoomImageChannel", room: "Best Room" }
