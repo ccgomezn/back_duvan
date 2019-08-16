@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2019_08_11_191920) do
   end
 
   create_table "images", force: :cascade do |t|
-    t.boolean "state"
+    t.string "state", default: "En proceso"
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
