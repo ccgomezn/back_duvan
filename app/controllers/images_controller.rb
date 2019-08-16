@@ -9,7 +9,7 @@ class ImagesController < ApplicationController
       ActionCable.server.broadcast(
         'room_image_channel', content: { message: 'hello' }
       )
-      render json: image.image_on_disk, status: :created
+      render json: image.image.service_url, status: :created
     else
       render json: image.errors, status: :unprocessable_entity
     end
