@@ -1,5 +1,5 @@
 class ImagesController < ApplicationController
-  before_action :set_image, only: [:show, :edit, :update, :destroy]
+  before_action :set_image, only: %i[show edit update destroy]
 
   def create
     image = Image.new(image_params)
@@ -7,7 +7,7 @@ class ImagesController < ApplicationController
     if image.save
 
       ActionCable.server.broadcast(
-        'room_image_channel', content: {message: "hello"}
+        'room_image_channel', content: { message: 'hello' }
       )
       render json: image.image_on_disk, status: :created
     else
@@ -25,8 +25,8 @@ class ImagesController < ApplicationController
     respond_to do |format|
       if @image.update(image_params)
         ActionCable.server.broadcast(
-        'room_image_channel', content: {message: "hello"}
-      )
+          'room_image_channel', content: { message: 'hello' }
+        )
         format.json { render :show, status: :ok, location: @image }
       else
         format.json { render json: @image.errors, status: :unprocessable_entity }
@@ -34,11 +34,12 @@ class ImagesController < ApplicationController
     end
   end
 
-
   private
+
   def set_image
     @image = Image.find(params[:id])
   end
+
   def image_params
     params.require(:image).permit(:state, :image, :name)
   end
