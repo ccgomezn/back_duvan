@@ -15,7 +15,7 @@ class ImagesController < ApplicationController
     end
 
     def index
-        images = Image.all
+        images = Image.find(:all, :conditions => { :state => 'En proceso' })
 
         render json: images, status: :ok
     end
