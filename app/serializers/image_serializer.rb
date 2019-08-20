@@ -3,6 +3,6 @@ class ImageSerializer < ActiveModel::Serializer
     include Rails.application.routes.url_helpers
 
     def image_url
-        rails_blob_url(self.object.image)
+        rails_blob_url(self.object.image, only_path: true)
     end
 end
