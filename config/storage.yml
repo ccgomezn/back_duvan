@@ -27,7 +27,7 @@ google:
     type: "service_account"
     project_id: '<%= ENV["project_id"] %>'
     private_key_id: '<%= ENV["private_key_id"] %>'
-    private_key: '<%= ENV["private_key"].lines.join("\\n") %>'
+    private_key: '<%= ENV["private_key"] %>'
     client_email: '<%= ENV["client_email"] %>'
     client_id: '<%= ENV["client_id"] %>'
     auth_uri: '<%= ENV["auth_uri"] %>'
