@@ -8,7 +8,7 @@ class ImagesController < ApplicationController
             ActionCable.server.broadcast(
                 'room_image_channel', content: { message: 'hello' }
             )
-            render json: image.image.rails_blob_url, status: :created
+            render json: rails_blob_url(image.image), status: :created
         else
             render json: image.errors, status: :unprocessable_entity
         end
