@@ -23,7 +23,7 @@ local:
 
 google:
   service: GCS
-  credentials: <%= ENV['GCD'] %>
+  credentials: ActiveSupport::JSON.decode(<%= ENV['GC'] %>)
   project: "latraviesa"
   bucket: "storage_latraviesa"
 # Use rails credentials:edit to set the Azure Storage secret (as azure_storage:storage_access_key)
