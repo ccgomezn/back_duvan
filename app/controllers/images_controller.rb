@@ -36,8 +36,8 @@ class ImagesController < ApplicationController
 
   def fcm_call_notification
     fcm = FCM.new(ENV['push_id'], :timeout => 30)
-    options = {notification: {title: "Nuevo pedido!", body: "Hola, tienes un nuevo pedido en la bodega!"},
-               priority: "high"}
+    options = {notification: {title: "Nuevo pedido!", body: "Hola, tienes un nuevo pedido en la bodega!", priority: "high", collapse_key:"updated_score"},
+               priority: "high", collapse_key:"updated_score"}
     response = fcm.send_to_topic('global',
                                  options)
   end
